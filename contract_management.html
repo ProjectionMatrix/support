@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Management System</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px 40px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .header-title p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Actions Bar */
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 10px 10px 36px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        
+        .btn-secondary { background-color: white; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background-color: #f1f5f9; }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* Table Styling */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            padding: 12px 16px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #f8fafc; }
+
+        /* Badges & Tags */
+        .badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-yes { background: #dcfce7; color: #15803d; }
+        .badge-no { background: #f1f5f9; color: #475569; }
+        
+        .file-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .file-link:hover { text-decoration: underline; }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .icon-btn:hover { color: var(--danger); }
+
+        /* Modal Form */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 8px;
+            padding: 24px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .modal-footer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        #fileImport { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>Contract Management</h1>
+            <p>Track, manage, import and export contract records</p>
+        </div>
+    </header>
+
+    <!-- Stat Dashboard -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Contracts</h3>
+            <div class="value" id="totalContracts">0</div>
+        </div>
+        <div class="stat-card">
+            <h3>Total Value</h3>
+            <div class="value" id="totalValue">$0.00</div>
+        </div>
+        <div class="stat-card">
+            <h3>Multi-Year Contracts</h3>
+            <div class="value" id="multiYearCount">0</div>
+        </div>
+    </div>
+
+    <!-- Actions & Controls -->
+    <div class="actions-bar">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search by contract #, vendor, or customer..." onkeyup="filterContracts()">
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="openModal()">
+                <i class="fa-solid fa-plus"></i> New Contract
+            </button>
+            <button class="btn btn-secondary" onclick="exportJSON()">
+                <i class="fa-solid fa-download"></i> Export JSON
+            </button>
+            <button class="btn btn-secondary" onclick="document.getElementById('fileImport').click()">
+                <i class="fa-solid fa-upload"></i> Import JSON
+            </button>
+            <input type="file" id="fileImport" accept=".json" onchange="importJSON(event)">
+        </div>
+    </div>
+
+    <!-- Main Data Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Contract #</th>
+                    <th>PR #</th>
+                    <th>Vendor</th>
+                    <th>Customer</th>
+                    <th>PoP Start</th>
+                    <th>PoP End</th>
+                    <th>Multi-Year</th>
+                    <th>Amount</th>
+                    <th>Document</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contractTableBody">
+                <!-- Data inserted dynamically via JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- New Contract Modal -->
+    <div class="modal-overlay" id="contractModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Contract</h2>
+                <button class="icon-btn" onclick="closeModal()"><i class="fa-solid fa-xmark fa-lg"></i></button>
+            </div>
+            <form id="contractForm" onsubmit="saveContract(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="contractNum">Contract Number *</label>
+                        <input type="text" id="contractNum" required placeholder="e.g., GS-35F-0001">
+                    </div>
+                    <div class="form-group">
+                        <label for="prNum">Purchase Request (PR) # *</label>
+                        <input type="text" id="prNum" required placeholder="e.g., PR-2026-889">
+                    </div>
+                    <div class="form-group">
+                        <label for="vendor">Vendor Name *</label>
+                        <input type="text" id="vendor" required placeholder="e.g., Acme Corp">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer">Customer / Agency *</label>
+                        <input type="text" id="customer" required placeholder="e.g., Dept. of Tech">
+                    </div>
+                    <div class="form-group">
+                        <label for="popStart">PoP Start Date *</label>
+                        <input type="date" id="popStart" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="popEnd">PoP End Date *</label>
+                        <input type="date" id="popEnd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="multiYear">Multi-Year Contract *</label>
+                        <select id="multiYear" required>
+                            <option value="N">No (N)</option>
+                            <option value="Y">Yes (Y)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Contract Amount ($) *</label>
+                        <input type="number" id="amount" step="0.01" required placeholder="0.00">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="contractFile">Attach Document (PDF/Word)</label>
+                        <input type="file" id="contractFile" accept=".pdf,.doc,.docx">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global Application State
+        let contracts = JSON.parse(localStorage.getItem('app_contracts')) || [];
+
+        // App Initialization
+        document.addEventListener("DOMContentLoaded", () => {
+            renderTable(contracts);
+        });
+
+        // UI Modal Helpers
+        function openModal() {
+            document.getElementById('contractModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('contractModal').classList.remove('active');
+            document.getElementById('contractForm').reset();
+        }
+
+        // Form Submission & Contract Addition
+        function saveContract(e) {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('contractFile');
+            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'N/A';
+
+            const newContract = {
+                id: Date.now(),
+                contractNum: document.getElementById('contractNum').value,
+                prNum: document.getElementById('prNum').value,
+                vendor: document.getElementById('vendor').value,
+                customer: document.getElementById('customer').value,
+                popStart: document.getElementById('popStart').value,
+                popEnd: document.getElementById('popEnd').value,
+                multiYear: document.getElementById('multiYear').value,
+                amount: parseFloat(document.getElementById('amount').value),
+                fileName: fileName
+            };
+
+            contracts.push(newContract);
+            saveAndRefresh();
+            closeModal();
+        }
+
+        // Delete Entry
+        function deleteContract(id) {
+            if (confirm("Are you sure you want to delete this contract?")) {
+                contracts = contracts.filter(c => c.id !== id);
+                saveAndRefresh();
+            }
+        }
+
+        // Save Local Storage and Update UI
+        function saveAndRefresh() {
+            localStorage.setItem('app_contracts', JSON.stringify(contracts));
+            renderTable(contracts);
+        }
+
+        // Format Currency Helper
+        function formatCurrency(val) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+        }
+
+        // Render Data Table & Update Stats Dashboard
+        function renderTable(data) {
+            const tbody = document.getElementById('contractTableBody');
+            tbody.innerHTML = '';
+
+            let totalValue = 0;
+            let multiYearCount = 0;
+
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color: var(--text-muted); padding:24px;">No contract records found. Click "New Contract" to add one.</td></tr>`;
+            } else {
+                data.forEach(c => {
+                    totalValue += Number(c.amount) || 0;
+                    if (c.multiYear === 'Y') multiYearCount++;
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${escapeHtml(c.contractNum)}</strong></td>
+                        <td>${escapeHtml(c.prNum)}</td>
+                        <td>${escapeHtml(c.vendor)}</td>
+                        <td>${escapeHtml(c.customer)}</td>
+                        <td>${c.popStart}</td>
+                        <td>${c.popEnd}</td>
+                        <td><span class="badge ${c.multiYear === 'Y' ? 'badge-yes' : 'badge-no'}">${c.multiYear}</span></td>
+                        <td><strong>${formatCurrency(c.amount)}</strong></td>
+                        <td>
+                            ${c.fileName !== 'N/A' 
+                                ? `<a href="#" class="file-link"><i class="fa-solid fa-file-pdf"></i> ${escapeHtml(c.fileName)}</a>` 
+                                : '<span style="color:var(--text-muted)">None</span>'}
+                        </td>
+                        <td class="action-btns">
+                            <button class="icon-btn" onclick="deleteContract(${c.id})" title="Delete Contract"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            // Update stats
+            document.getElementById('totalContracts').innerText = data.length;
+            document.getElementById('totalValue').innerText = formatCurrency(totalValue);
+            document.getElementById('multiYearCount').innerText = multiYearCount;
+        }
+
+        // Search/Filter Functionality
+        function filterContracts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = contracts.filter(c => 
+                c.contractNum.toLowerCase().includes(query) ||
+                c.vendor.toLowerCase().includes(query) ||
+                c.customer.toLowerCase().includes(query) ||
+                c.prNum.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        }
+
+        // JSON Export
+        function exportJSON() {
+            if (contracts.length === 0) {
+                alert("No contract data to export.");
+                return;
+            }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(contracts, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `contracts_backup_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // JSON Import
+        function importJSON(event) {
+            const fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (Array.isArray(importedData)) {
+                        contracts = importedData;
+                        saveAndRefresh();
+                        alert('Contracts successfully imported!');
+                    } else {
+                        alert('Invalid JSON file format. Must be an array of contracts.');
+                    }
+                } catch (err) {
+                    alert('Error parsing JSON file. Please check file formatting.');
+                }
+            };
+            if (event.target.files[0]) {
+                fileReader.readAsText(event.target.files[0]);
+            }
+        }
+
+        // Security Utility
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+            });
+        }
+    </script>
+</body>
+</html>
