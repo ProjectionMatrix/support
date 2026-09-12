@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Personnel Directory</title>
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --danger-color: #ef4444;
+            --danger-hover: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .actions-panel {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-hover);
+        }
+
+        /* Form Styling */
+        .form-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.55rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Table Styling */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 0.85rem 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-contractor { background-color: #e0f2fe; color: #0369a1; }
+        .badge-gs { background-color: #dcfce7; color: #15803d; }
+        .badge-military { background-color: #fef3c7; color: #b45309; }
+
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>HR Personnel Roster</h1>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="actions-panel">
+        <button class="btn btn-secondary" onclick="exportJSON()">Export JSON</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">Import JSON</button>
+        <input type="file" id="fileInput" accept=".json" onchange="importJSON(event)">
+    </div>
+
+    <!-- Add Employee Form -->
+    <div class="form-card">
+        <h2>Add New Personnel</h2>
+        <form id="employeeForm" onsubmit="handleAddEmployee(event)">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Employee Name</label>
+                    <input type="text" id="name" required placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required placeholder="Systems Analyst">
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <input type="text" id="service" required placeholder="Army / IT / HR">
+                </div>
+                <div class="form-group">
+                    <label for="workCenter">Work Center</label>
+                    <input type="text" id="workCenter" required placeholder="Bldg 101 / Rm 20">
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type" required>
+                        <option value="GS">GS</option>
+                        <option value="Contractor">Contractor</option>
+                        <option value="Military">Military</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn">Add Record</button>
+        </form>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>Service</th>
+                    <th>Work Center</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTableBody">
+                <!-- Dynamic Rows Go Here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Initial sample data
+    let personnel = [
+        {
+            id: 1,
+            name: "John Smith",
+            title: "Program Manager",
+            startDate: "2021-03-15",
+            service: "Army",
+            workCenter: "HQ-01",
+            type: "GS"
+        },
+        {
+            id: 2,
+            name: "Sarah Jenkins",
+            title: "Cyber Security Analyst",
+            startDate: "2023-01-10",
+            service: "Air Force",
+            workCenter: "SOC-West",
+            type: "Contractor"
+        }
+    ];
+
+    // Render Table
+    function renderTable() {
+        const tbody = document.getElementById('employeeTableBody');
+        tbody.innerHTML = '';
+
+        if (personnel.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #94a3b8; padding: 2rem;">No personnel records found.</td></tr>`;
+            return;
+        }
+
+        personnel.forEach(emp => {
+            const tr = document.createElement('tr');
+            
+            // Format Type Badge
+            const badgeClass = `badge-${emp.type.toLowerCase()}`;
+
+            tr.innerHTML = `
+                <td><strong>${escapeHtml(emp.name)}</strong></td>
+                <td>${escapeHtml(emp.title)}</td>
+                <td>${escapeHtml(emp.startDate)}</td>
+                <td>${escapeHtml(emp.service)}</td>
+                <td>${escapeHtml(emp.workCenter)}</td>
+                <td><span class="badge ${badgeClass}">${escapeHtml(emp.type)}</span></td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteEmployee(${emp.id})">Delete</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Add Record
+    function handleAddEmployee(e) {
+        e.preventDefault();
+
+        const newEmp = {
+            id: Date.now(), // Unique ID based on timestamp
+            name: document.getElementById('name').value.trim(),
+            title: document.getElementById('title').value.trim(),
+            startDate: document.getElementById('startDate').value,
+            service: document.getElementById('service').value.trim(),
+            workCenter: document.getElementById('workCenter').value.trim(),
+            type: document.getElementById('type').value
+        };
+
+        personnel.push(newEmp);
+        renderTable();
+        document.getElementById('employeeForm').reset();
+    }
+
+    // Delete Record
+    function deleteEmployee(id) {
+        personnel = personnel.filter(emp => emp.id !== id);
+        renderTable();
+    }
+
+    // Export to JSON file
+    function exportJSON() {
+        if (personnel.length === 0) {
+            alert("No data available to export.");
+            return;
+        }
+        
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(personnel, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `HR_Personnel_Export_${new Date().toISOString().slice(0,10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+    }
+
+    // Import from JSON file
+    function importJSON(event) {
+        const fileReader = new FileReader();
+        fileReader.onload = function(e) {
+            try {
+                const importedData = JSON.parse(e.target.result);
+                
+                // Basic Validation check
+                if (Array.isArray(importedData)) {
+                    personnel = importedData.map(item => ({
+                        id: item.id || Date.now() + Math.random(),
+                        name: item.name || "N/A",
+                        title: item.title || "N/A",
+                        startDate: item.startDate || "N/A",
+                        service: item.service || "N/A",
+                        workCenter: item.workCenter || "N/A",
+                        type: item.type || "GS"
+                    }));
+                    renderTable();
+                    alert("Data imported successfully!");
+                } else {
+                    alert("Invalid JSON format. Expected an array of personnel objects.");
+                }
+            } catch (err) {
+                alert("Error reading JSON file. Please ensure it is a valid JSON file.");
+            }
+        };
+
+        if (event.target.files[0]) {
+            fileReader.readAsText(event.target.files[0]);
+        }
+        
+        // Reset file input so the same file can be selected again if needed
+        event.target.value = '';
+    }
+
+    // Helper to prevent basic XSS
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function(m) {
+            return {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[m];
+        });
+    }
+
+    // Initial load
+    renderTable();
+</script>
+
+</body>
+</html>
