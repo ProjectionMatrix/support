@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSH Reaccreditation / Renewal Application Form – 2021 Accreditation Standards</title>
+<style>
+  :root {
+    --primary: #003366;
+    --secondary: #005599;
+    --accent: #e8f0fe;
+    --border: #ccd6e0;
+    --text: #222;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+    background: #f7f9fc;
+  }
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 1.75rem 2rem;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+  }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.65rem; }
+  header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+  .form-container {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.4rem;
+    margin-top: 2.5rem;
+    font-size: 1.35rem;
+  }
+  h3 {
+    color: var(--secondary);
+    margin: 1.75rem 0 0.75rem;
+    font-size: 1.15rem;
+  }
+  .standard {
+    background: var(--accent);
+    border-left: 4px solid var(--primary);
+    padding: 0.9rem 1.1rem;
+    margin: 1.25rem 0 0.75rem;
+    font-weight: 600;
+  }
+  .criterion {
+    margin: 1.1rem 0 0.5rem;
+    font-weight: 500;
+  }
+  label {
+    display: block;
+    font-weight: 500;
+    margin: 0.75rem 0 0.3rem;
+  }
+  textarea, input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  .file-group {
+    margin: 0.6rem 0 1rem;
+    padding: 0.6rem;
+    background: #fafbfc;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+  .required::after { content: " *"; color: #c00; }
+  .note {
+    font-size: 0.88rem;
+    color: #555;
+    font-style: italic;
+    margin: 0.3rem 0 0.8rem;
+  }
+  .section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .section-nav a {
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.4rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  .section-nav a:hover { background: var(--secondary); }
+  fieldset {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  legend {
+    font-weight: 600;
+    color: var(--primary);
+    padding: 0 0.5rem;
+  }
+  .json-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f0f5fa;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .json-controls button, .json-controls label.btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .json-controls button:hover, .json-controls label.btn:hover {
+    background: var(--secondary);
+  }
+  .json-controls input[type="file"] {
+    display: none;
+  }
+  .submit-area {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border);
+    text-align: center;
+  }
+  button[type="submit"] {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover { background: var(--secondary); }
+  .checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 400;
+    margin-right: 1.25rem;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.75rem; }
+    .form-container { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SSH Reaccreditation / Renewal Application</h1>
+  <p>Society for Simulation in Healthcare – 2021 Accreditation Standards<br>
+  Application due July 15 of the year accreditation expires. All Core standards are required. At least one additional area must be selected.</p>
+</header>
+
+<div class="form-container">
+<form action="#" method="post" enctype="multipart/form-data" id="ssh-reaccreditation-form">
+
+  <!-- JSON Import / Export Controls -->
+  <div class="json-controls">
+    <strong>Data Tools:</strong>
+    <button type="button" id="export-json-btn">⬇ Export to JSON</button>
+    <label class="btn" for="import-json-input">⬆ Import from JSON</label>
+    <input type="file" id="import-json-input" accept=".json,application/json">
+    <span id="import-status" style="font-size:0.9rem;color:#555;"></span>
+  </div>
+
+  <!-- Program Identification -->
+  <h2 id="identification">Program Identification</h2>
+  <label class="required" for="program-name">Simulation Program Name</label>
+  <input type="text" id="program-name" name="program_name" required>
+
+  <label class="required" for="org-name">Overarching Organization (if applicable)</label>
+  <input type="text" id="org-name" name="org_name">
+
+  <label class="required" for="contact-name">Primary Contact Name</label>
+  <input type="text" id="contact-name" name="contact_name" required>
+
+  <label class="required" for="contact-email">Primary Contact Email</label>
+  <input type="email" id="contact-email" name="contact_email" required>
+
+  <label for="contact-phone">Primary Contact Phone</label>
+  <input type="tel" id="contact-phone" name="contact_phone">
+
+  <label class="required" for="current-exp">Current Accreditation Expiration Year</label>
+  <input type="text" id="current-exp" name="current_expiration" required placeholder="e.g., 2026">
+
+  <fieldset>
+    <legend>Areas of Accreditation Applied For (Core is mandatory; select at least one additional area)</legend>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="areas[]" value="Core" checked disabled> Core (Required)</label>
+      <label><input type="checkbox" name="areas[]" value="Assessment"> Assessment</label>
+      <label><input type="checkbox" name="areas[]" value="Research"> Research</label>
+      <label><input type="checkbox" name="areas[]" value="Teaching/Education"> Teaching/Education</label>
+      <label><input type="checkbox" name="areas[]" value="Human Simulation"> Human Simulation</label>
+      <label><input type="checkbox" name="areas[]" value="Systems Integration"> Systems Integration</label>
+      <label><input type="checkbox" name="areas[]" value="Fellowship"> Fellowship</label>
+    </div>
+  </fieldset>
+
+  <nav class="section-nav">
+    <a href="#core">Core Standards</a>
+    <a href="#teaching">Teaching/Education</a>
+    <a href="#assessment">Assessment</a>
+    <a href="#research">Research</a>
+    <a href="#human">Human Simulation</a>
+    <a href="#systems">Systems Integration</a>
+    <a href="#fellowship">Fellowship</a>
+  </nav>
+
+  <!-- ===================== CORE ===================== -->
+  <h2 id="core">CORE STANDARDS AND CRITERIA</h2>
+  <p class="note">Core Standards are the fundamental structural and operational standards that all accredited Programs must meet. The seven sections of Core Standards are: (1) Mission &amp; Governance, (2) Program Management, (3) Resource Management, (4) Human Resources, (5) Program Improvement, (6) Integrity, and (7) Expanding the Field.</p>
+
+  <!-- 1. MISSION AND GOVERNANCE -->
+  <h3>1. MISSION AND GOVERNANCE</h3>
+
+  <div class="standard">a. The Simulation Program has a clear and publicly stated mission and/or vision statement that specifically addresses the intent and functions of the Program.</div>
+  <div class="criterion">i. Document: Provide the mission and/or vision statement(s) for both the Program and the overarching organization (if one exists).</div>
+  <div class="file-group">
+    <label>Upload mission/vision statement(s)</label>
+    <input type="file" name="core_1a_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Describe in what manner the Program’s mission and vision are publicly displayed.</div>
+  <textarea name="core_1a_ii_describe" required></textarea>
+
+  <div class="standard">b. The Simulation Program has a clearly identified and appropriate governance structure.</div>
+  <div class="criterion">i. Describe and provide supporting documentation for the Program’s organization and structure, including how it is linked to the overarching organization if one exists. *Please provide all applicable organizational charts.*</div>
+  <textarea name="core_1b_i_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation / organizational charts</label>
+    <input type="file" name="core_1b_i_docs[]" multiple>
+  </div>
+
+  <div class="standard">c. The Simulation Program has a clearly identified and appropriate governance structure.</div>
+  <div class="criterion">i. Describe the governance structure including people or committees that provide oversight and/or advisory functions to the Program.</div>
+  <textarea name="core_1c_i_describe" required></textarea>
+  <div class="criterion">ii. Describe the process by which the governance structure provides oversight and reviews/approves the activities of the Program.</div>
+  <textarea name="core_1c_ii_describe" required></textarea>
+
+  <div class="standard">d. The Simulation Program has a written strategic plan designed to accomplish the mission and/or vision of the Program.</div>
+  <div class="criterion">i. Describe the process for strategic planning.</div>
+  <textarea name="core_1d_i_describe" required></textarea>
+  <div class="criterion">ii. Document: Provide a written strategic plan, including the Program’s goals for the next three to five years and how they will be achieved.</div>
+  <div class="file-group">
+    <label>Upload written strategic plan</label>
+    <input type="file" name="core_1d_ii_docs[]" multiple>
+  </div>
+  <div class="criterion">iii. Describe the operational trends that you anticipate will impact the Program for the next three to five years.</div>
+  <textarea name="core_1d_iii_describe" required></textarea>
+
+  <!-- 2. PROGRAM MANAGEMENT -->
+  <h3>2. PROGRAM MANAGEMENT</h3>
+
+  <div class="standard">a. The Simulation Program has adequate financial resources to support its mission and/or vision.</div>
+  <div class="criterion">i. Describe the Program’s budget process for operating and capital expenses and identify the individual(s) responsible for fiscal affairs.</div>
+  <textarea name="core_2a_i_describe" required></textarea>
+  <div class="criterion">ii. Describe the Program’s current financial status.</div>
+  <textarea name="core_2a_ii_describe" required></textarea>
+  <div class="criterion">iii. Describe the Program’s financial sustainability over time.</div>
+  <textarea name="core_2a_iii_describe" required></textarea>
+
+  <div class="standard">b. The Simulation Program provides day-to-day oversight of simulation activities.</div>
+  <div class="criterion">i. Describe the process for the day-to-day oversight and/or coordination of various simulation activities within the Program.</div>
+  <textarea name="core_2b_i_describe" required></textarea>
+  <div class="criterion">ii. Describe and provide supporting documents for the methods used to ensure the staff is kept up to date on simulation activities and Program operations.</div>
+  <textarea name="core_2b_ii_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documents</label>
+    <input type="file" name="core_2b_ii_docs[]" multiple>
+  </div>
+
+  <div class="standard">c. The Simulation Program has written policies and procedures to assure the Program provides quality services and meets its obligations and commitments.</div>
+  <div class="criterion">i. Document: Provide simulation-specific policies and procedures utilized by the Program. These should include, at minimum, the policies and procedures listed below:<br>
+  1. Confidentiality Procedures<br>
+  2. Physical and Psychological Safety<br>
+  3. Separation of Simulation and Actual Patient Care Materials<br>
+  4. Storage and Maintenance of Equipment and Supplies<br>
+  5. Video Recording<br>
+  6. Data Retention<br>
+  7. Prioritization of Simulation Resources.</div>
+  <div class="file-group">
+    <label>Upload simulation-specific policies and procedures</label>
+    <input type="file" name="core_2c_i_docs[]" multiple required>
+  </div>
+
+  <div class="standard">d. The Simulation Program has the ability to prioritize resources as needed.</div>
+  <div class="criterion">i. Describe up to three (3) examples that demonstrate how simulation resources are prioritized.</div>
+  <textarea name="core_2d_i_describe" required></textarea>
+
+  <!-- 3. RESOURCE MANAGEMENT -->
+  <h3>3. RESOURCE MANAGEMENT</h3>
+
+  <div class="standard">a. The Simulation Program has the ability to obtain, maintain, and support simulation equipment and relevant technologies to support the mission and/or vision of the Program.</div>
+  <div class="criterion">i. Describe the various simulation modalities used in the Program.</div>
+  <textarea name="core_3a_i_describe" required></textarea>
+  <div class="criterion">ii. Document: Provide a list of simulation equipment and resources.</div>
+  <div class="file-group">
+    <label>Upload list of simulation equipment and resources</label>
+    <input type="file" name="core_3a_ii_docs[]" multiple>
+  </div>
+  <div class="criterion">iii. Describe the process to continually assess simulation modalities and how they are evaluated for the current and future needs of the Program.</div>
+  <textarea name="core_3a_iii_describe" required></textarea>
+
+  <div class="standard">b. The Simulation Program has adequate physical space for simulation activities to support the mission and/or vision of the Program.</div>
+  <div class="criterion">i. Describe the facilities utilized by the Program for simulation activity.</div>
+  <textarea name="core_3b_i_describe" required></textarea>
+  <div class="criterion">ii. Document: Provide the floor plan/blueprints and/or photographs of facilities utilized by the Program.</div>
+  <div class="file-group">
+    <label>Upload floor plans / blueprints / photographs</label>
+    <input type="file" name="core_3b_ii_docs[]" multiple>
+  </div>
+
+  <div class="standard">c. The Simulation Program provides an adequate number and variety of simulation activities to support the mission/vision of the Program.</div>
+  <div class="criterion">i. Document: Provide a list of simulation activities for the Program over the past 24 months.</div>
+  <div class="file-group">
+    <label>Upload list of simulation activities (past 24 months)</label>
+    <input type="file" name="core_3c_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Document the total number of learner contact hours for the past 24 months.</div>
+  <label>Total learner contact hours (past 24 months)</label>
+  <input type="text" name="core_3c_ii_hours" required>
+
+  <!-- 4. HUMAN RESOURCES -->
+  <h3>4. HUMAN RESOURCES</h3>
+
+  <div class="standard">a. The Simulation Program is directed by a qualified individual with appropriate authority and time.</div>
+  <div class="criterion">i. Document: Provide the job description and any other supporting documents for the Program Director.</div>
+  <div class="file-group">
+    <label>Upload Program Director job description and supporting documents</label>
+    <input type="file" name="core_4a_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Document: Provide an accreditation biosketch for the Program Director.</div>
+  <div class="file-group">
+    <label>Upload Program Director accreditation biosketch</label>
+    <input type="file" name="core_4a_ii_docs[]" multiple>
+  </div>
+  <div class="criterion">iii. Describe how the Program Director has the authority for the operations of the Program.</div>
+  <textarea name="core_4a_iii_describe" required></textarea>
+  <div class="criterion">iv. Describe and provide supporting documentation that demonstrates that the Director is assigned sufficient time in this role to support the mission and/or vision of the Program.</div>
+  <textarea name="core_4a_iv_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (Director time allocation)</label>
+    <input type="file" name="core_4a_iv_docs[]" multiple>
+  </div>
+
+  <div class="standard">b. The Simulation Program has adequate staff to support the mission/vision of the Program.</div>
+  <div class="criterion">i. Document: Provide job descriptions for all Program Staff.</div>
+  <div class="file-group">
+    <label>Upload job descriptions for all Program Staff</label>
+    <input type="file" name="core_4b_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Document: Provide accreditation biosketches for all Program Staff.</div>
+  <div class="file-group">
+    <label>Upload accreditation biosketches for all Program Staff</label>
+    <input type="file" name="core_4b_ii_docs[]" multiple>
+  </div>
+  <div class="criterion">iii. Describe how Program Staff is sufficient to support the mission/vision of the Program.</div>
+  <textarea name="core_4b_iii_describe" required></textarea>
+
+  <div class="standard">c. The Simulation Program has a process in place to orient, support, and evaluate Simulation Program staff.</div>
+  <div class="criterion">i. Describe and provide supporting documentation as to how Program Staff is oriented to their roles.</div>
+  <textarea name="core_4c_i_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (orientation)</label>
+    <input type="file" name="core_4c_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Describe and provide supporting documentation as to how ongoing professional development opportunities are provided and/or supported for Program staff.</div>
+  <textarea name="core_4c_ii_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (professional development)</label>
+    <input type="file" name="core_4c_ii_docs[]" multiple>
+  </div>
+  <div class="criterion">iii. Describe and provide supporting documentation for the ongoing evaluation and feedback process for Program Staff.</div>
+  <textarea name="core_4c_iii_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (evaluation and feedback)</label>
+    <input type="file" name="core_4c_iii_docs[]" multiple>
+  </div>
+
+  <!-- 5. PROGRAM IMPROVEMENT -->
+  <h3>5. PROGRAM IMPROVEMENT</h3>
+
+  <div class="standard">a. The Simulation Program continually improves the operations of the Program through the use of a quality management system.</div>
+  <div class="criterion">i. Describe and provide supporting documentation for the quality management system utilized by the Program.</div>
+  <textarea name="core_5a_i_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (quality management system)</label>
+    <input type="file" name="core_5a_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Describe and provide supporting documentation for Three (3) improvements made based on the quality management system over the past 24 months.</div>
+  <textarea name="core_5a_ii_describe" required></textarea>
+  <div class="file-group">
+    <label>Upload supporting documentation (three improvements)</label>
+    <input type="file" name="core_5a_ii_docs[]" multiple>
+  </div>
+
+  <div class="standard">b. The Simulation Program has processes in place to identify and address concerns and complaints.</div>
+  <div class="criterion">i. Describe the process to address concerns and complaints.</div>
+  <textarea name="core_5b_i_describe" required></textarea>
+  <div class="criterion">ii. Describe any concerns and complaints received in the past 24 months and their resolutions.</div>
+  <textarea name="core_5b_ii_describe" required></textarea>
+
+  <!-- 6. INTEGRITY -->
+  <h3>6. INTEGRITY</h3>
+
+  <div class="standard">a. The Simulation Program is committed to ethical standards.</div>
+  <div class="criterion">i. Describe the ethical standards utilized by the Program.</div>
+  <textarea name="core_6a_i_describe" required></textarea>
+  <div class="criterion">ii. Describe how the Program operationalizes these ethical standards.</div>
+  <textarea name="core_6a_ii_describe" required></textarea>
+
+  <!-- 7. EXPANDING THE FIELD -->
+  <h3>7. EXPANDING THE FIELD</h3>
+
+  <div class="standard">a. The Simulation Program has activities that extend beyond the Program, contributing to the body of knowledge in the simulation community.</div>
+  <div class="criterion">i. Document that at least one (1) individual involved with the Program is a member of a healthcare simulation society or association.</div>
+  <div class="file-group">
+    <label>Upload documentation of membership</label>
+    <input type="file" name="core_7a_i_docs[]" multiple>
+  </div>
+  <div class="criterion">ii. Document: Provide a list of activities (no more than 10) that support or contribute to knowledge within or about simulation.</div>
+  <div class="file-group">
+    <label>Upload list of activities (maximum 10)</label>
+    <input type="file" name="core_7a_ii_docs[]" multiple>
+  </div>
+
+  <!-- Optional areas (abbreviated for length – same pattern) -->
+  <h2 id="teaching">TEACHING/EDUCATION STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Teaching/Education. Full criteria from the 2021 SSH Teaching/Education Accreditation Standards must be addressed.</p>
+  <textarea name="teaching_responses" placeholder="Enter responses to all Teaching/Education standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Teaching/Education response package and evidence</label>
+    <input type="file" name="teaching_docs[]" multiple>
+  </div>
+
+  <h2 id="assessment">ASSESSMENT STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Assessment.</p>
+  <textarea name="assessment_responses" placeholder="Enter responses to all Assessment standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Assessment response package and evidence</label>
+    <input type="file" name="assessment_docs[]" multiple>
+  </div>
+
+  <h2 id="research">RESEARCH STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Research.</p>
+  <textarea name="research_responses" placeholder="Enter responses to all Research standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Research response package and evidence</label>
+    <input type="file" name="research_docs[]" multiple>
+  </div>
+
+  <h2 id="human">HUMAN SIMULATION STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Human Simulation.</p>
+  <textarea name="human_responses" placeholder="Enter responses to all Human Simulation standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Human Simulation response package and evidence</label>
+    <input type="file" name="human_docs[]" multiple>
+  </div>
+
+  <h2 id="systems">SYSTEMS INTEGRATION STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Systems Integration.</p>
+  <textarea name="systems_responses" placeholder="Enter responses to all Systems Integration standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Systems Integration response package and evidence</label>
+    <input type="file" name="systems_docs[]" multiple>
+  </div>
+
+  <h2 id="fellowship">FELLOWSHIP STANDARDS AND CRITERIA</h2>
+  <p class="note">Complete only if applying for Fellowship.</p>
+  <textarea name="fellowship_responses" placeholder="Enter responses to all Fellowship standards and criteria here, or attach a complete response document below."></textarea>
+  <div class="file-group">
+    <label>Upload complete Fellowship response package and evidence</label>
+    <input type="file" name="fellowship_docs[]" multiple>
+  </div>
+
+  <div class="submit-area">
+    <p class="note">All fees associated with SSH Accreditation will be invoiced to your Program following submission and approval of the application. Review the official Companion Documents and Informational Guide before final submission. Submit through the official SSH online application portal when ready.</p>
+    <button type="submit">Save / Prepare Application Package</button>
+  </div>
+
+</form>
+</div>
+
+<footer style="text-align:center; margin-top:2rem; font-size:0.85rem; color:#666;">
+  Form structured exclusively from the official 2021 SSH Accreditation Standards published by the Society for Simulation in Healthcare.<br>
+  Official portal: <a href="https://www.ssih.org/reaccreditation" target="_blank" rel="noopener">ssih.org/reaccreditation</a>
+</footer>
+
+<script>
+(function() {
+  const form = document.getElementById('ssh-reaccreditation-form');
+  const exportBtn = document.getElementById('export-json-btn');
+  const importInput = document.getElementById('import-json-input');
+  const statusEl = document.getElementById('import-status');
+
+  // ---------- EXPORT ----------
+  exportBtn.addEventListener('click', function() {
+    const data = {
+      meta: {
+        form: "SSH Reaccreditation / Renewal Application",
+        standards: "2021 SSH Accreditation Standards",
+        exportedAt: new Date().toISOString(),
+        programName: form.program_name?.value || ""
+      },
+      fields: {}
+    };
+
+    // Collect all named form controls
+    const elements = form.querySelectorAll('input, textarea, select');
+    elements.forEach(el => {
+      if (!el.name) return;
+
+      if (el.type === 'checkbox') {
+        if (!data.fields[el.name]) data.fields[el.name] = [];
+        if (el.checked) data.fields[el.name].push(el.value);
+      } else if (el.type === 'file') {
+        // Store only file names (binary content cannot be stored in JSON)
+        if (el.files && el.files.length > 0) {
+          data.fields[el.name] = Array.from(el.files).map(f => f.name);
+        } else {
+          data.fields[el.name] = [];
+        }
+      } else if (el.type === 'radio') {
+        if (el.checked) data.fields[el.name] = el.value;
+      } else {
+        data.fields[el.name] = el.value;
+      }
+    });
+
+    // Create and download the file
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const safeName = (data.meta.programName || 'SSH_Reaccreditation').replace(/[^a-z0-9]/gi, '_');
+    a.href = url;
+    a.download = `${safeName}_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    statusEl.textContent = 'Exported successfully.';
+    setTimeout(() => statusEl.textContent = '', 3000);
+  });
+
+  // ---------- IMPORT ----------
+  importInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      try {
+        const data = JSON.parse(event.target.result);
+        if (!data.fields) throw new Error('Invalid format: missing "fields" object');
+
+        // Clear current values first (optional but cleaner)
+        form.reset();
+
+        // Restore values
+        Object.keys(data.fields).forEach(name => {
+          const value = data.fields[name];
+          const elements = form.querySelectorAll(`[name="${name}"]`);
+
+          if (elements.length === 0) return;
+
+          if (elements[0].type === 'checkbox') {
+            elements.forEach(cb => {
+              cb.checked = Array.isArray(value) ? value.includes(cb.value) : false;
+            });
+          } else if (elements[0].type === 'file') {
+            // Cannot restore actual File objects. Just show a note.
+            // (Optional: you could display the previous file names somewhere)
+          } else {
+            elements[0].value = value ?? '';
+          }
+        });
+
+        // Re-check Core (it is disabled + required)
+        const coreCb = form.querySelector('input[name="areas[]"][value="Core"]');
+        if (coreCb) coreCb.checked = true;
+
+        statusEl.textContent = 'Imported successfully. Please re-attach any required documents.';
+        statusEl.style.color = '#0a0';
+      } catch (err) {
+        statusEl.textContent = 'Import failed: ' + err.message;
+        statusEl.style.color = '#c00';
+      }
+
+      // Reset the file input so the same file can be selected again if needed
+      importInput.value = '';
+    };
+    reader.readAsText(file);
+  });
+})();
+</script>
+
+</body>
+</html>
